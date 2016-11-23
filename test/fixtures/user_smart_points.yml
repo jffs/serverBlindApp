@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_mac: MyString
+  spoint_mac: MyString
+  date: 2016-11-22 17:15:59
+
+two:
+  user_mac: MyString
+  spoint_mac: MyString
+  date: 2016-11-22 17:15:59

@@ -1,0 +1,2 @@
+module UserSmartPointsHelper
+end

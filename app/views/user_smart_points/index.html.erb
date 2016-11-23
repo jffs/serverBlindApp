@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing User Smart Points</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User mac</th>
+      <th>Spoint mac</th>
+      <th>Date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_smart_points.each do |user_smart_point| %>
+      <tr>
+        <td><%= user_smart_point.user_mac %></td>
+        <td><%= user_smart_point.spoint_mac %></td>
+        <td><%= user_smart_point.date %></td>
+        <td><%= link_to 'Show', user_smart_point %></td>
+        <td><%= link_to 'Edit', edit_user_smart_point_path(user_smart_point) %></td>
+        <td><%= link_to 'Destroy', user_smart_point, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User smart point', new_user_smart_point_path %>

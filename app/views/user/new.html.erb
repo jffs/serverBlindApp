@@ -1,0 +1,10 @@
+<%= form_for :user, :url => { :action => :create } do |f| %>
+  <p>
+    <%= f.label :macaddress %><br>
+    <%= f.text_field :macaddress %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
