@@ -5,38 +5,31 @@ class UserSmartPointsController < ApplicationController
   # GET /user_smart_points.json
   def index
     @user_smart_points = UserSmartPoint.all
+    render json: @user_smart_points
   end
 
   # GET /user_smart_points/1
   # GET /user_smart_points/1.json
   def show
-    @spmacs=UserSmartPoint.where(user_mac: User.find(1).macaddress).collect{|x| x.spoint_mac}
-    #@spmacs.each do |sp|
-      @points=SmartPoint.where(macaddress: @spmacs)
-    #end
-    #@points = SmartPoint.all
-    @hash = Gmaps4rails.build_markers(@points) do |point, marker|
-      marker.lat point.lat
-      marker.lng point.long
-      marker.infowindow point.name
-    end
+
   end
   def maps
-
-    @spmacs=UserSmartPoint.where(user_mac: User.find(1).macaddress).collect{|x| x.spoint_mac}
-    if (@spmacs)
-    #@spmacs.each do |sp|
-      @points=SmartPoint.where(macaddress: @spmacs)
-    #end
-    #@points = SmartPoint.all
-    @hash = Gmaps4rails.build_markers(@points) do |point, marker|
-      marker.lat point.lat
-      marker.lng point.long
-      marker.infowindow point.name
+    begin
+      user = User.first.macaddress
+    rescue ActiveRecord::RecordNotFound => e
+      user = nil
     end
-  else 
-    render json: {'No ha pasado por ningun lado'}
-  end
+    if (user==nil)
+      render text: "No hay usuarios"
+    else
+      @spmacs=UserSmartPoint.where(user_mac: user).collect{|x| x.spoint_mac}
+      @points=SmartPoint.where(macaddress: @spmacs)
+      @hash = Gmaps4rails.build_markers(@points) do |point, marker|
+        marker.lat point.lat
+        marker.lng point.long
+        marker.infowindow point.name
+      end
+    end
   end
 
   # GET /user_smart_points/new
