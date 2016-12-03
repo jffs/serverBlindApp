@@ -1,6 +1,7 @@
 class UserController < ApplicationController
 respond_to :json
-   
+   skip_before_action :verify_authenticity_token
+
   # GET /users.json
   def index
     @users = User.all
