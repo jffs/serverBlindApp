@@ -10,7 +10,7 @@ respond_to :json
  	    @user = User.find_by(macaddress: params[:macaddress])
     	render json: @user
  end
-  # POST /users.json
+  # GET /users.json
  def create
     if User.exists?(user_params)
       render json: {'status': 'same'}

@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
     get 'user/:macaddress' => 'user#show'
     get 'smart_point/:macaddress' => 'smartpoint#show'
+    get  'user/create/' => "user#create"
+
 # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

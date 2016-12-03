@@ -13,28 +13,31 @@
 
 ActiveRecord::Schema.define(version: 20161122201559) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "smart_points", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.string   "lat",        limit: 255
-    t.string   "long",       limit: 255
-    t.string   "date",       limit: 255
-    t.string   "macaddress", limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "name"
+    t.string   "lat"
+    t.string   "long"
+    t.string   "date"
+    t.string   "macaddress"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "user_smart_points", force: :cascade do |t|
-    t.string   "user_mac",   limit: 255
-    t.string   "spoint_mac", limit: 255
+    t.string   "user_mac"
+    t.string   "spoint_mac"
     t.datetime "date"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "macaddress", limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "macaddress"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
