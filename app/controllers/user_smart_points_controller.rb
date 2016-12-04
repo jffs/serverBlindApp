@@ -14,11 +14,7 @@ class UserSmartPointsController < ApplicationController
 
   end
   def maps
-    begin
-      user = User.first.macaddress
-    rescue ActiveRecord::RecordNotFound => e
-      user = nil
-    end
+    user = User.first.macaddress
     if (user==nil)
       render text: "No hay usuarios"
     else

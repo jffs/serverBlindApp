@@ -13,7 +13,7 @@ respond_to :json
   end
   # GET /users.json
  def create
-    if User.exists?(params[:macaddress])
+    if User.exists?(:macaddress => params[:macaddress])
       render json: {'status': 'same'}
     else
        @user = User.new()

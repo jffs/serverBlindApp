@@ -12,17 +12,21 @@ respond_to :json
  end
   # POST /users.json
  def create
-    if SmartPoint.exists?(sp_params)
+    if SmartPoint.exists?(:macaddress => params[:macaddress])
       render json: {'status': 'same'}
     else
-       @sp = SmartPoint.new(sp_params)
-       if @sp.save
-      render json: {'status': params}
-       else
-       render json: {'status':'error', 'errors':@user.errors}
-       end
+        @sp = SmartPoint.new
+        @sp.macaddress= params[:macaddress]
+        @sp.name= params[:name]
+        @sp.lat= params[:lat]
+        @sp.long= params[:long]
+        if @sp.save
+          render json: {'status': 'success'}
+        else
+          render json: {'status':'error', 'errors':@user.errors}
+        end
     end
-   UserSmartPoint.create(:user_mac => params[:smart_point][:user_mac], :spoint_mac =>params[:smart_point][:macaddress], :date => DateTime.now)
+    UserSmartPoint.create(:user_mac => params[:user_mac], :spoint_mac =>params[:macaddress], :date => DateTime.now)
   end
   def new
   	@sp=SmartPoint.new

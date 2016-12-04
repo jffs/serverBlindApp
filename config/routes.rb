@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   resources :user_smart_points
 
-    resources :smart_point
     match  'user/create' => "user#create", :via => :get
     get 'user/:macaddress' => 'user#show'
+    match  'smart_point/create' => "smart_point#create", :via => :get
+    get 'smart_point/' =>"smart_point#index"
+
+    get 'user/' =>"user#index"
     get 'smart_point/:macaddress' => 'smartpoint#show'
 # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
