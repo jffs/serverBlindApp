@@ -1,6 +1,6 @@
 class SmartPointController < ApplicationController
-respond_to :json
-      skip_before_action :verify_authenticity_token
+  respond_to :json
+  skip_before_action :verify_authenticity_token
 
   # GET /users.json
   def index
@@ -14,6 +14,7 @@ respond_to :json
   # POST /users.json
  def create
     if SmartPoint.exists?(:macaddress => params[:macaddress])
+      UserSmartPoint.create(:user_mac => params[:user_mac], :spoint_mac =>params[:macaddress], :date => DateTime.now)
       render json: {'status': 'same'}
     else
         @sp = SmartPoint.new
@@ -22,12 +23,12 @@ respond_to :json
         @sp.lat= params[:lat]
         @sp.long= params[:long]
         if @sp.save
+          UserSmartPoint.create(:user_mac => params[:user_mac], :spoint_mac =>params[:macaddress], :date => DateTime.now)
           render json: {'status': 'success'}
         else
           render json: {'status':'error', 'errors':@user.errors}
         end
     end
-    UserSmartPoint.create(:user_mac => params[:user_mac], :spoint_mac =>params[:macaddress], :date => DateTime.now)
   end
   def new
   	@sp=SmartPoint.new

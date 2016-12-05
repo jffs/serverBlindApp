@@ -3,11 +3,12 @@ Rails.application.routes.draw do
 
     match  'user/create' => "user#create", :via => :get
     get 'user/:macaddress' => 'user#show'
+    get 'user/' =>"user#index"
+
     match  'smart_point/create' => "smart_point#create", :via => :get
     get 'smart_point/' =>"smart_point#index"
-
-    get 'user/' =>"user#index"
     get 'smart_point/:macaddress' => 'smartpoint#show'
+
 # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
