@@ -14,7 +14,7 @@ class SmartPointController < ApplicationController
   # POST /users.json
  def create
     if SmartPoint.exists?(:macaddress => params[:macaddress])
-      UserSmartPoint.create(:user_mac => params[:user_mac], :spoint_mac =>params[:macaddress], :date => DateTime.now)
+      #UserSmartPoint.create(:user_mac => params[:user_mac], :spoint_mac =>params[:macaddress], :date => DateTime.now)
       render json: {'status': 'same'}
     else
         @sp = SmartPoint.new
@@ -23,7 +23,7 @@ class SmartPointController < ApplicationController
         @sp.lat= params[:lat]
         @sp.long= params[:long]
         if @sp.save
-          UserSmartPoint.create(:user_mac => params[:user_mac], :spoint_mac =>params[:macaddress], :date => DateTime.now)
+          #UserSmartPoint.create(:user_mac => params[:user_mac], :spoint_mac =>params[:macaddress], :date => DateTime.now)
           render json: {'status': 'success'}
         else
           render json: {'status':'error', 'errors':@user.errors}
