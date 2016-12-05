@@ -1,5 +1,7 @@
 class UserSmartPointsController < ApplicationController
   before_action :set_user_smart_point, only: [:show, :edit, :update, :destroy]
+     skip_before_action :verify_authenticity_token
+
 
   # GET /user_smart_points
   # GET /user_smart_points.json
