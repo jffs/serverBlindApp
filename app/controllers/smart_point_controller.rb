@@ -20,8 +20,8 @@ class SmartPointController < ApplicationController
         @sp = SmartPoint.new()
         @sp.macaddress= params[:macaddress]
         @sp.name= params[:name]
-   #     @sp.lat= params[:lat]
-    #    @sp.long= params[:long]
+        @sp.lat= params[:lat]
+        @sp.long= params[:long]
         if @sp.save
        #   @usp=UserSmartPoint.new
         #  @usp.user_mac=params[:user_mac]
