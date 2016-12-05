@@ -23,6 +23,7 @@ class SmartPointController < ApplicationController
         @sp.lat= params[:lat]
         @sp.long= params[:long]
         if @sp.save
+          UserSmartPoint.create(:user_mac => params[:user_mac], :spoint_mac =>params[:macaddress], :date => DateTime.now)
        #   @usp=UserSmartPoint.new
         #  @usp.user_mac=params[:user_mac]
          # @usp.spoint_mac=params[:macaddress]
