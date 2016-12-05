@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+    resources :user_smart_points
 
     match 'user/create' => "user#create", :via => :get
     get 'user/:macaddress' => 'user#show'
