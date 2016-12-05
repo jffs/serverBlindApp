@@ -19,7 +19,7 @@ class SmartPointController < ApplicationController
     else
         @sp = SmartPoint.new()
         @sp.macaddress= params[:macaddress]
-  #      @sp.name= params[:name]
+        @sp.name= params[:name]
    #     @sp.lat= params[:lat]
     #    @sp.long= params[:long]
         if @sp.save
