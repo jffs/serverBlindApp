@@ -16,18 +16,17 @@ class UserSmartPointsController < ApplicationController
 
   end
   def maps
-    user = User.first.macaddress
-    if (user==nil)
-      render text: "No hay usuarios"
+    if (User.exists?())
+      user = User.first.macaddress
+        @spmacs=UserSmartPoint.where(user_mac: user).collect{|x| x.spoint_mac}
+        @points=SmartPoint.where(macaddress: @spmacs)
+        @hash = Gmaps4rails.build_markers(@points) do |point, marker|
+          marker.lat point.lat
+          marker.lng point.long
+          marker.infowindow point.name
+        end
     else
-      @spmacs=UserSmartPoint.where(user_mac: user).collect{|x| x.spoint_mac}
-      @points=SmartPoint.where(macaddress: @spmacs)
-      @hash = Gmaps4rails.build_markers(@points) do |point, marker|
-        marker.lat point.lat
-        marker.lng point.long
-        marker.infowindow point.name
-      end
-    end
+      render text: "No hay usuarios cargados"
   end
 
   # GET /user_smart_points/new
