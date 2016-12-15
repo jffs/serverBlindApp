@@ -1,9 +1,25 @@
-postgres:
-  image: postgres:9.4.5
+version: '2'
+services:
+ db:
+  image: postgres
+  restart: always
   environment:
-    POSTGRES_USER: blindApp
-    POSTGRES_PASSWORD: ''
-  ports:
-    - '5432:5432'
+   POSTGRES_USER: blindApp
+   POSTGRES_DB: blindApp_production
+   POSTGRES_PASSWORD: ''
+ app:
+  build: .
+  command: bundle exec rails s -p 3000 -b 0.0.0.0
   volumes:
-    - drkiq-postgres:/var/lib/postgresql/data
+   - ".:/blindApp"
+  ports: 
+   - "3001:3000"
+  depends_on:
+   - db
+  links:
+   - db
+  environment:
+   DB_NAME: blindApp_production
+   DB_USER: blindApp
+   DB_PASSWORD: 
+   DB_HOST: db

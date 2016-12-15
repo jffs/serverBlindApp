@@ -1,6 +1,6 @@
 class UserSmartPointsController < ApplicationController
   before_action :set_user_smart_point, only: [:show, :edit, :update, :destroy]
-     skip_before_action :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
 
 
   # GET /user_smart_points
@@ -17,7 +17,7 @@ class UserSmartPointsController < ApplicationController
   end
   def maps
     if (User.exists?())
-      user = User.first.macaddress
+        user = User.first.macaddress
         @spmacs=UserSmartPoint.where(user_mac: user).collect{|x| x.spoint_mac}
         @points=SmartPoint.where(macaddress: @spmacs)
         @hash = Gmaps4rails.build_markers(@points) do |point, marker|
@@ -27,6 +27,7 @@ class UserSmartPointsController < ApplicationController
         end
     else
       render text: "No hay usuarios cargados"
+    end
   end
 
   # GET /user_smart_points/new
@@ -88,4 +89,4 @@ class UserSmartPointsController < ApplicationController
     def user_smart_point_params
       params.require(:user_smart_point).permit(:user_mac, :spoint_mac, :date)
     end
-end
+  end

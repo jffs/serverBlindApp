@@ -1,0 +1,27 @@
+D, [2016-12-13T00:06:44.952003 #1] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (2.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+D, [2016-12-13T00:06:49.025421 #1] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+D, [2016-12-13T00:06:54.633913 #1] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (4.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+D, [2016-12-13T00:07:01.804395 #1] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+D, [2016-12-13T00:07:06.652721 #1] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+D, [2016-12-13T00:07:12.384924 #1] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+D, [2016-12-13T00:07:19.704666 #1] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+D, [2016-12-13T00:07:30.134417 #1] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+D, [2016-12-13T00:07:47.383336 #1] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+D, [2016-12-13T03:15:08.578100 #1] DEBUG -- :   [1m[36m (25.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+D, [2016-12-13T03:15:08.587782 #1] DEBUG -- :   [1m[35m (3.5ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+D, [2016-12-13T03:15:08.591487 #1] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-12-13T03:15:08.603913 #1]  INFO -- : Migrating to CreateSmartPoints (20161122005858)
+D, [2016-12-13T03:15:08.608206 #1] DEBUG -- :   [1m[35m (0.4ms)[0m  BEGIN
+D, [2016-12-13T03:15:08.628648 #1] DEBUG -- :   [1m[36m (15.6ms)[0m  [1mCREATE TABLE "smart_points" ("id" serial primary key, "name" character varying, "lat" character varying, "long" character varying, "date" character varying, "macaddress" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+D, [2016-12-13T03:15:08.665636 #1] DEBUG -- :   [1m[35mSQL (1.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20161122005858"]]
+D, [2016-12-13T03:15:08.668301 #1] DEBUG -- :   [1m[36m (1.4ms)[0m  [1mCOMMIT[0m
+I, [2016-12-13T03:15:08.668654 #1]  INFO -- : Migrating to CreateUsers (20161122010005)
+D, [2016-12-13T03:15:08.672812 #1] DEBUG -- :   [1m[35m (0.3ms)[0m  BEGIN
+D, [2016-12-13T03:15:08.686086 #1] DEBUG -- :   [1m[36m (10.2ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "macaddress" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+D, [2016-12-13T03:15:08.691067 #1] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20161122010005"]]
+D, [2016-12-13T03:15:08.694094 #1] DEBUG -- :   [1m[36m (1.5ms)[0m  [1mCOMMIT[0m
+I, [2016-12-13T03:15:08.694506 #1]  INFO -- : Migrating to CreateUserSmartPoints (20161122201559)
+D, [2016-12-13T03:15:08.700071 #1] DEBUG -- :   [1m[35m (0.6ms)[0m  BEGIN
+D, [2016-12-13T03:15:08.710528 #1] DEBUG -- :   [1m[36m (7.5ms)[0m  [1mCREATE TABLE "user_smart_points" ("id" serial primary key, "user_mac" character varying, "spoint_mac" character varying, "date" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+D, [2016-12-13T03:15:08.719330 #1] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20161122201559"]]
+D, [2016-12-13T03:15:08.721212 #1] DEBUG -- :   [1m[36m (1.2ms)[0m  [1mCOMMIT[0m
